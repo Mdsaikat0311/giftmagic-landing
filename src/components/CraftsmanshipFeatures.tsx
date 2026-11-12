@@ -23,9 +23,9 @@ export const CraftsmanshipFeatures: React.FC = () => {
     },
     {
       icon: Droplets,
-      title: '১০০% ওয়াটারপ্রুফ ও নো-ফেড',
+      title: '৩ বছরের কালার গ্যারান্টি (১০০% ওয়াটারপ্রুফ)',
       description:
-        'পানি, ঘাম বা সাবানের সংস্পর্শেও কালার বিবর্ণ বা কালো হয় না। প্রতিদিন গোসলের সময় পরে থাকলেও নষ্ট হবে না।',
+        'পানি, ঘাম বা সাবানের সংস্পর্শেও কালার বিবর্ণ বা কালো হয় না। টানা ৩ বছরেও রঙ ওঠার কোনো ভয় নেই।',
     },
     {
       icon: Shield,
@@ -51,7 +51,14 @@ export const CraftsmanshipFeatures: React.FC = () => {
           <h2 className="font-serif-luxury text-xl sm:text-3xl font-bold text-[#211c19] mt-1.5 font-bengali">
             কেন এই ১৮ ক্যারেট গোল্ড প্লেটেড স্নেক পায়েলটি সেরা উপহার?
           </h2>
-          <p className="text-xs sm:text-sm font-bengali text-[#695a4c] mt-2">
+
+          {/* Highlighted 3 Years Color Guarantee Banner */}
+          <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 mt-3 rounded-full bg-linear-to-r from-[#9e2a2b] via-[#b83335] to-[#9e2a2b] text-white shadow-md border border-[#ffd778]/40 font-bengali text-xs sm:text-sm font-bold">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ffd778] shrink-0" />
+            <span>৩ বছরের কালার গ্যারান্টি — ৩ বছরেও রঙ উঠবে না!</span>
+          </div>
+
+          <p className="text-xs sm:text-sm font-bengali text-[#695a4c] mt-2.5">
             বাজারের সাধারণ ইমিটেশন জুয়েলারির মতো রঙ উঠে যায় না। খাঁটি রাজকীয় ফিনিশিং ও দীর্ঘস্থায়ী স্থায়িত্বের নিখুঁত সংমিশ্রণ।
           </p>
         </div>

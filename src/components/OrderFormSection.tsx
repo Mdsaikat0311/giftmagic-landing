@@ -224,39 +224,6 @@ export const OrderFormSection: React.FC<OrderFormSectionProps> = ({
               })}
             </div>
 
-            {/* Quantity Stepper (Added right here in the Order Section!) */}
-            <div className="flex items-center justify-between p-3.5 bg-[#fbf8f2] rounded-xl border border-[#ede3d3] mt-3">
-              <div>
-                <span className="font-bengali font-bold text-xs sm:text-sm text-[#382f26]">
-                  পরিমাণ (Quantity):
-                </span>
-                <span className="block text-[11px] text-stone-500">
-                  কয়টি প্যাকেজ নিতে চান সংখ্যা নির্ধারণ করুন
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => onQuantityChange(Math.max(1, quantity - 1))}
-                  aria-label="Decrease quantity"
-                  className="w-9 h-9 rounded-lg bg-white border border-[#d8ccba] hover:bg-[#f0e7d8] text-[#211c19] font-bold flex items-center justify-center transition-colors cursor-pointer text-base shadow-2xs"
-                >
-                  -
-                </button>
-                <span className="font-mono font-bold text-base text-[#211c19] tabular-nums w-6 text-center">
-                  {quantity}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => onQuantityChange(quantity + 1)}
-                  aria-label="Increase quantity"
-                  className="w-9 h-9 rounded-lg bg-white border border-[#d8ccba] hover:bg-[#f0e7d8] text-[#211c19] font-bold flex items-center justify-center transition-colors cursor-pointer text-base shadow-2xs"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-
             {/* Extra Selectable Option / Add-on: বাচ্চা মেয়েদের একজোড়া পায়েল */}
             <div className="pt-2">
               <div
@@ -445,7 +412,7 @@ export const OrderFormSection: React.FC<OrderFormSectionProps> = ({
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-bold text-[#211c19]">{selectedPackage.bengaliName}</span>
-                  <span className="text-stone-500 text-xs">({quantity} টি)</span>
+                  {quantity > 1 && <span className="text-stone-500 text-xs">({quantity} টি)</span>}
                 </div>
                 <span className="font-mono font-bold text-[#211c19] tabular-nums">৳{packageTotal}</span>
               </div>
