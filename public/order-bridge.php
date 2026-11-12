@@ -16,7 +16,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// Only accept POST requests
+// Step 1: Search and locate wp-load.php by traversing upwards
+$wp_loaded = false;
+$current_dir = __DIR__;
+
+for ($i = 0; $i < 8; $i++) {
+    if (file_exists($current_dir . '/wp-load.php')) {
+        require_once($current_dir . '/wp-load.php');
+        $wp_loaded = true;
+        break;
+    }
+    $parent = dirname($current_dir);
+    if ($parent === $current_dir) {
+        break;
+    }
+    $current_dir = $parent;
+}
+
+// Handle GET request to read recent WooCommerce orders for live notifications
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $recent = array();
+
+    if ($wp_loaded && function_exists('wc_get_orders')) {
+        try {
+            $wc_orders = wc_get_orders(array(
+                'limit'   => 10,
+                'orderby' => 'date',
+                'order'   => 'DESC',
+                'status'  => array('processing', 'completed', 'pending', 'on-hold')
+            ));
+
+            foreach ($wc_orders as $ord) {
+                $name = $ord->get_billing_first_name();
+                if (empty($name)) $name = 'সম্মানিত গ্রাহক';
+                $city = $ord->get_billing_city() ?: 'ঢাকা';
+                $items = $ord->get_items();
+                $itemName = '১৮ ক্যারেট গোল্ড প্লেটেড পায়েল';
+                foreach ($items as $item) {
+                    $itemName = $item->get_name();
+                    break;
+                }
+
+                $timeAgo = 'কয়েক মিনিট আগে';
+                $dateCreated = $ord->get_date_created();
+                if ($dateCreated) {
+                    $diffMinutes = round((time() - $dateCreated->getTimestamp()) / 60);
+                    if ($diffMinutes <= 2) $timeAgo = 'সবেমাত্র';
+                    else if ($diffMinutes < 60) $timeAgo = $diffMinutes . ' মিনিট আগে';
+                    else $timeAgo = round($diffMinutes / 60) . ' ঘণ্টা আগে';
+                }
+
+                $recent[] = array(
+                    'name' => $name,
+                    'city' => $city,
+                    'item' => $itemName,
+                    'time' => $timeAgo
+                );
+            }
+        } catch (Exception $e) {
+            // Ignore error
+        }
+    }
+
+    // Check backup orders.json if needed
+    if (empty($recent) && file_exists(__DIR__ . '/orders.json')) {
+        $content = @file_get_contents(__DIR__ . '/orders.json');
+        if (!empty($content)) {
+            $saved = json_decode($content, true) ?: array();
+            foreach (array_slice($saved, 0, 10) as $s) {
+                $recent[] = array(
+                    'name' => $s['customerName'] ?? 'সম্মানিত গ্রাহক',
+                    'city' => ($s['deliveryArea'] ?? '') === 'inside_dhaka' ? 'ঢাকা' : 'ঢাকার বাইরে',
+                    'item' => $s['packageName'] ?? '১৮ ক্যারেট গোল্ড প্লেটেড পায়েল',
+                    'time' => 'কিছুক্ষণ আগে'
+                );
+            }
+        }
+    }
+
+    http_response_code(200);
+    echo json_encode(array('success' => true, 'orders' => $recent));
+    exit;
+}
+
+// Only accept POST requests for order placement
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(array(
@@ -38,10 +121,6 @@ if (!$data || empty($data['customerName']) || empty($data['phone'])) {
     ));
     exit;
 }
-
-// Step 1: Search and locate wp-load.php by traversing upwards
-$wp_loaded = false;
-$current_dir = __DIR__;
 
 for ($i = 0; $i < 8; $i++) {
     if (file_exists($current_dir . '/wp-load.php')) {

@@ -37,12 +37,6 @@ export const PRODUCT_IMAGES = [
     title: 'মাইক্রো ডিটেইলিং ও হাই-গ্রেড পলিশ',
     subtitle: 'খাঁটি স্টেইনলেস স্টিল বেস - ওয়াটারপ্রুফ ও নন-অ্যালার্জিক',
   },
-  {
-    id: 'img-7',
-    url: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainless-1_d1d989f3.jpg',
-    title: 'আকর্ষণীয় হেরিংবোন স্নেক প্যাটার্ন',
-    subtitle: 'আরামদায়ক ও চুল বা কাপড়ে আটকে না যাওয়ার বিশেষ টেক্সচার',
-  },
 ];
 
 export const PRODUCT_PACKAGES: ProductPackage[] = [

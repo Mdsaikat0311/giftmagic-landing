@@ -21,14 +21,13 @@ export const PhotoLookbook: React.FC = () => {
         </div>
 
         {/* Masonry / Lookbook Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {PRODUCT_IMAGES.map((img, index) => (
+        {/* Symmetrical Lookbook Grid (6 balanced images) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4.5">
+          {PRODUCT_IMAGES.map((img) => (
             <div
               key={img.id}
               onClick={() => setSelectedImg(img)}
-              className={`relative rounded-xl overflow-hidden border border-[#ede3d3] bg-[#fbf8f2] group cursor-pointer shadow-2xs hover:shadow-md transition-all ${
-                index === 0 || index === 3 ? 'md:col-span-2 md:row-span-2' : ''
-              }`}
+              className="relative rounded-xl overflow-hidden border border-[#ede3d3] bg-[#fbf8f2] group cursor-pointer shadow-2xs hover:shadow-md transition-all aspect-4/3 sm:aspect-square"
             >
               <img
                 src={img.url}

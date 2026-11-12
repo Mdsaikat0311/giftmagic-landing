@@ -1,71 +1,150 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, X, CheckCircle } from 'lucide-react';
+import { X, CheckCircle } from 'lucide-react';
 import { LIVE_PURCHASE_NOTIFICATIONS } from '../data/productData';
+import { CustomerOrder } from '../types';
+
+interface NotificationItem {
+  name: string;
+  city: string;
+  item: string;
+  time: string;
+  isReal?: boolean;
+}
 
 export const LivePurchaseNotification: React.FC = () => {
+  const [notifications, setNotifications] = useState<NotificationItem[]>(LIVE_PURCHASE_NOTIFICATIONS);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
+  // Load real e-commerce orders from localStorage and WooCommerce bridge
   useEffect(() => {
-    if (dismissed) return;
+    const loadOrders = async () => {
+      const realItems: NotificationItem[] = [];
 
-    // Show initial after 3 seconds
+      // 1. Read locally stored e-commerce orders
+      try {
+        const stored = localStorage.getItem('giftmagic_orders') || localStorage.getItem('jhilmill_orders');
+        if (stored) {
+          const parsedOrders: CustomerOrder[] = JSON.parse(stored);
+          parsedOrders.slice(0, 10).forEach((ord) => {
+            if (ord.customerName) {
+              realItems.push({
+                name: ord.customerName,
+                city: ord.deliveryArea === 'inside_dhaka' ? 'ঢাকা' : 'ঢাকার বাইরে',
+                item: ord.packageName || '১ জোড়া স্নেক পায়েল',
+                time: 'সদ্য অর্ডার হয়েছে',
+                isReal: true,
+              });
+            }
+          });
+        }
+      } catch (e) {
+        console.error('Error reading local orders', e);
+      }
+
+      // 2. Fetch live WooCommerce orders from order-bridge.php if available
+      try {
+        const res = await fetch('./order-bridge.php', { method: 'GET' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.orders && Array.isArray(data.orders)) {
+            data.orders.forEach((o: any) => {
+              if (o.name) {
+                realItems.push({
+                  name: o.name,
+                  city: o.city || 'বাংলাদেশ',
+                  item: o.item || '১৮ ক্যারেট গোল্ড প্লেটেড পায়েল',
+                  time: o.time || 'কিছুক্ষণ আগে',
+                  isReal: true,
+                });
+              }
+            });
+          }
+        }
+      } catch {
+        // Fallback silently
+      }
+
+      // Merge real orders with demo orders so it repeatedly loops smoothly
+      if (realItems.length > 0) {
+        setNotifications([...realItems, ...LIVE_PURCHASE_NOTIFICATIONS]);
+      }
+    };
+
+    loadOrders();
+  }, []);
+
+  // Interval loop: repeatedly show orders one after another
+  useEffect(() => {
+    if (dismissed || notifications.length === 0) return;
+
+    // Show initial after 2.5 seconds
     const initialTimer = setTimeout(() => {
       setVisible(true);
-    }, 3000);
+    }, 2500);
 
-    // Interval to cycle through
-    const interval = setInterval(() => {
+    // Repeat cycle: 5.5s visible, 3.5s pause, then next order
+    const cycleInterval = setInterval(() => {
       setVisible(false);
       setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % LIVE_PURCHASE_NOTIFICATIONS.length);
+        setCurrentIndex((prev) => (prev + 1) % notifications.length);
         setVisible(true);
-      }, 4000);
-    }, 14000);
+      }, 3500);
+    }, 9000);
 
     return () => {
       clearTimeout(initialTimer);
-      clearInterval(interval);
+      clearInterval(cycleInterval);
     };
-  }, [dismissed]);
+  }, [dismissed, notifications.length]);
 
-  if (dismissed || !visible) return null;
+  if (dismissed || !visible || notifications.length === 0) return null;
 
-  const current = LIVE_PURCHASE_NOTIFICATIONS[currentIndex];
+  const current = notifications[currentIndex % notifications.length];
 
   return (
-    <div className="fixed bottom-20 left-3 right-3 sm:right-auto sm:left-4 z-40 sm:max-w-xs bg-white/95 backdrop-blur-md border border-[#d8be8d] rounded-2xl p-3 shadow-lg font-bengali transition-all duration-300">
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl overflow-hidden border border-[#e0d3be] shrink-0">
+    /* Small, compact side corner badge: NEVER takes full screen */
+    <aside
+      aria-live="polite"
+      className="fixed bottom-18 sm:bottom-6 left-3 sm:left-5 z-40 w-[240px] sm:w-[265px] max-w-[80vw] bg-white/95 backdrop-blur-md border border-[#d8be8d] rounded-xl p-2.5 shadow-lg font-bengali transition-all duration-300 right-auto animate-fadeIn select-none"
+    >
+      <div className="flex items-center gap-2.5">
+        {/* Tiny thumbnail */}
+        <div className="w-8 h-8 rounded-lg overflow-hidden border border-[#e0d3be] shrink-0 bg-[#faf6ee]">
           <img
             src="/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg"
-            alt="Payel ordered"
+            alt="Payel"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover"
           />
         </div>
 
+        {/* Order text */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1 text-[11px] text-[#2d7a46] font-semibold">
-            <CheckCircle className="w-3 h-3 shrink-0" />
-            <span>সদ্য অর্ডার কনফার্ম করেছেন</span>
+          <div className="flex items-center gap-1 text-[10px] text-[#2d7a46] font-semibold leading-tight">
+            <CheckCircle className="w-2.5 h-2.5 shrink-0" />
+            <span className="truncate">
+              {current.isReal ? 'ই-কমার্স অর্ডার' : 'সদ্য অর্ডার হয়েছে'}
+            </span>
           </div>
-          <p className="text-xs font-bold text-[#211c19] truncate">
+          <p className="text-[11px] font-bold text-[#211c19] truncate leading-tight mt-0.5">
             {current.name} · <span className="text-stone-500 font-normal">{current.city}</span>
           </p>
-          <p className="text-[10px] text-[#9e2a2b] font-medium truncate">
+          <p className="text-[10px] text-[#9e2a2b] font-medium truncate leading-tight">
             {current.item} ({current.time})
           </p>
         </div>
 
+        {/* Small dismiss button */}
         <button
           onClick={() => setDismissed(true)}
-          className="text-stone-300 hover:text-stone-600 p-1 cursor-pointer shrink-0"
+          aria-label="Close notification"
+          className="text-stone-300 hover:text-stone-600 p-0.5 cursor-pointer shrink-0"
         >
-          <X className="w-3.5 h-3.5" />
+          <X className="w-3 h-3" />
         </button>
       </div>
-    </div>
+    </aside>
   );
 };

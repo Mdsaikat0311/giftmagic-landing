@@ -37,7 +37,7 @@ export const CraftsmanshipFeatures: React.FC = () => {
       icon: Gift,
       title: 'লাক্সারি গিফট প্যাকেজিং',
       description:
-        'প্রিয়জনকে উপহার দেওয়ার জন্য রয়্যাল ভেলভেট বক্স ও স্পেশাল রিবন দিয়ে নিখুঁতভাবে সাজানো থাকে।',
+        'প্রিয়জনকে উপহার দেওয়ার জন্য প্রিমিয়াম জুয়েলারি বক্স ও আকর্ষণীয় প্যাকেজিংয়ে সাজানো থাকে।',
     },
   ];
 
@@ -56,22 +56,22 @@ export const CraftsmanshipFeatures: React.FC = () => {
           </p>
         </div>
 
-        {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full">
+        {/* Feature Cards Grid (2 per row on mobile & compact layout) */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 md:gap-5 w-full">
           {features.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="bg-white p-5 sm:p-6 rounded-2xl border border-[#e8dfcf] shadow-2xs hover:shadow-xs transition-shadow flex flex-col gap-3 group"
+                className="bg-white p-3 sm:p-5 rounded-xl sm:rounded-2xl border border-[#e8dfcf] shadow-2xs hover:shadow-xs transition-shadow flex flex-col gap-2 sm:gap-2.5 group"
               >
-                <div className="w-11 h-11 rounded-xl bg-[#faf5eb] border border-[#e5d8c3] flex items-center justify-center text-[#9e7626] group-hover:scale-105 transition-transform">
-                  <Icon className="w-5 h-5 text-[#9e7626]" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#faf5eb] border border-[#e5d8c3] flex items-center justify-center text-[#9e7626] group-hover:scale-105 transition-transform shrink-0">
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#9e7626]" />
                 </div>
-                <h3 className="font-bengali font-bold text-base text-[#211c19] group-hover:text-[#9e2a2b] transition-colors">
+                <h3 className="font-bengali font-bold text-xs sm:text-base text-[#211c19] group-hover:text-[#9e2a2b] transition-colors leading-snug">
                   {item.title}
                 </h3>
-                <p className="font-bengali text-xs sm:text-sm text-[#665749] leading-relaxed">
+                <p className="font-bengali text-[11px] sm:text-xs text-[#665749] leading-relaxed">
                   {item.description}
                 </p>
               </div>
