@@ -50,14 +50,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-2 text-slate-900 whitespace-nowrap shrink-0 group"
         >
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-linear-to-br from-[#c99f36] to-[#916e1e] flex items-center justify-center text-white shadow-xs">
-            <span className="font-serif-luxury text-lg sm:text-xl font-bold tracking-wider">J</span>
+            <span className="font-serif-luxury text-lg sm:text-xl font-bold tracking-wider">G</span>
           </div>
           <div className="flex flex-col">
             <span className="font-serif-luxury text-lg sm:text-2xl font-bold tracking-widest text-[#211c19] uppercase">
-              JHILMILL
+              GIFT MAGIC
             </span>
             <span className="font-bengali text-[9px] sm:text-[10px] tracking-wider text-[#94784a] -mt-1 font-medium">
-              ঝিলমিল · লাক্সারি গিফট
+              গিফট ম্যাজিক · লাক্সারি গিফট
             </span>
           </div>
         </a>

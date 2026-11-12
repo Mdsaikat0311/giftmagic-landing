@@ -6,11 +6,13 @@ import {
   CheckCircle2,
   ShieldCheck,
   ShoppingBag,
-  MessageCircle,
   Check,
+  MessageCircle,
 } from 'lucide-react';
 import { ProductPackage, CustomerOrder } from '../types';
 import { PRODUCT_PACKAGES } from '../data/productData';
+import { submitOrderToWooCommerce } from '../services/wooCommerceService';
+import { trackPurchase, trackInitiateCheckout } from '../utils/tracking';
 
 interface OrderFormSectionProps {
   selectedPackage: ProductPackage;
@@ -43,7 +45,7 @@ export const OrderFormSection: React.FC<OrderFormSectionProps> = ({
   const total = subtotal + deliveryFee;
 
   const whatsappOrderText = encodeURIComponent(
-    `আসসালামু আলাইকুম! আমি ঝিলমিল থেকে "${selectedPackage.bengaliName}" (${quantity} জোড়া${
+    `আসসালামু আলাইকুম! আমি গিফট ম্যাজিক থেকে "${selectedPackage.bengaliName}" (${quantity} জোড়া${
       includeKidsPayel ? ' + বাচ্চা মেয়েদের ১ জোড়া পায়েল' : ''
     }, মোট ৳${total}) সম্পর্কে বিস্তারিত জেনে অর্ডার করতে / অগ্রিম পেমেন্ট করতে চাই।` +
       (customerName.trim() ? `\nনাম: ${customerName.trim()}` : '') +
@@ -51,6 +53,7 @@ export const OrderFormSection: React.FC<OrderFormSectionProps> = ({
       (address.trim() ? `\nঠিকানা: ${address.trim()}` : '')
   );
   const whatsappCheckoutUrl = `https://wa.me/8801700000000?text=${whatsappOrderText}`;
+
 
   const validate = () => {
     const errs: { [key: string]: string } = {};
@@ -70,51 +73,66 @@ export const OrderFormSection: React.FC<OrderFormSectionProps> = ({
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
 
-    // Simulate instant order processing
-    setTimeout(() => {
-      const orderId = `JS-${Math.floor(100000 + Math.random() * 900000)}`;
-      const newOrder: CustomerOrder = {
-        id: orderId,
-        createdAt: new Date().toLocaleString('bn-BD', {
-          dateStyle: 'medium',
-          timeStyle: 'short',
-        }),
-        customerName: customerName.trim(),
-        phone: phone.trim(),
-        address: address.trim(),
-        deliveryArea,
-        deliveryFee,
-        packageId: selectedPackage.id,
-        packageName: selectedPackage.bengaliName,
-        quantity,
-        unitPrice: selectedPackage.salePrice,
-        subtotal,
-        total,
-        includeKidsPayel,
-        kidsPayelPrice: kidsAddonPrice,
-        status: 'Pending',
-        paymentMethod: 'Cash on Delivery',
-      };
+    const generatedId = `JS-${Math.floor(100000 + Math.random() * 900000)}`;
+    const newOrder: CustomerOrder = {
+      id: generatedId,
+      createdAt: new Date().toLocaleString('bn-BD', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      }),
+      customerName: customerName.trim(),
+      phone: phone.trim(),
+      address: address.trim(),
+      deliveryArea,
+      deliveryFee,
+      packageId: selectedPackage.id,
+      packageName: selectedPackage.bengaliName,
+      quantity,
+      unitPrice: selectedPackage.salePrice,
+      subtotal,
+      total,
+      includeKidsPayel,
+      kidsPayelPrice: kidsAddonPrice,
+      status: 'Pending',
+      paymentMethod: 'Cash on Delivery',
+    };
 
-      // Save to localStorage history
-      try {
-        const stored = localStorage.getItem('jhilmill_orders');
-        const orders: CustomerOrder[] = stored ? JSON.parse(stored) : [];
-        orders.unshift(newOrder);
-        localStorage.setItem('jhilmill_orders', JSON.stringify(orders));
-      } catch (err) {
-        console.error('Failed to save order to localStorage', err);
+    // 1. Sync with WooCommerce (Native WordPress Bridge or REST API)
+    try {
+      const syncResult = await submitOrderToWooCommerce(newOrder);
+      if (syncResult && syncResult.wcOrderId) {
+        newOrder.wcOrderId = syncResult.wcOrderId;
+        newOrder.id = `#${syncResult.wcOrderId}`;
       }
+    } catch (err) {
+      console.warn('WooCommerce sync warning (fallback local save active)', err);
+    }
 
-      setIsSubmitting(false);
-      onOrderSuccess(newOrder);
-    }, 600);
+    // 2. Fire Meta Pixel (Purchase + Lead), GA4, TikTok, GTM DataLayer
+    try {
+      trackPurchase(newOrder);
+    } catch (err) {
+      console.warn('Pixel tracking error', err);
+    }
+
+    // 3. Save to localStorage history
+    try {
+      const stored = localStorage.getItem('giftmagic_orders') || localStorage.getItem('jhilmill_orders');
+      const orders: CustomerOrder[] = stored ? JSON.parse(stored) : [];
+      orders.unshift(newOrder);
+      localStorage.setItem('giftmagic_orders', JSON.stringify(orders));
+    } catch (err) {
+      console.error('Failed to save order to localStorage', err);
+    }
+
+    setIsSubmitting(false);
+    onOrderSuccess(newOrder);
   };
 
   return (

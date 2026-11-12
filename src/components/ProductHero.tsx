@@ -43,7 +43,7 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
 
   // Pre-generate WhatsApp message
   const waText = encodeURIComponent(
-    `আসসালামু আলাইকুম! আমি Jhilmill থেকে "${selectedPackage.bengaliName}" (${quantity} টি) অর্ডার করতে আগ্রহী। মোট মূল্য: ৳${saleTotalPrice}। বিস্তারিত জানাবেন প্লিজ।`
+    `আসসালামু আলাইকুম! আমি Gift Magic থেকে "${selectedPackage.bengaliName}" (${quantity} টি) অর্ডার করতে আগ্রহী। মোট মূল্য: ৳${saleTotalPrice}। বিস্তারিত জানাবেন প্লিজ।`
   );
   const whatsappUrl = `https://wa.me/8801700000000?text=${waText}`;
 
@@ -218,16 +218,30 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
               <span className="truncate">এখনই অর্ডার করুন (ক্যাশ অন ডেলিভারি)</span>
             </button>
 
-            <div className="w-full">
+            {/* Dedicated WhatsApp Option (Identical to Order Section) */}
+            <div className="w-full pt-1 space-y-2">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 px-3 sm:px-4 rounded-xl border border-[#25d366]/40 bg-[#f0fbf4] hover:bg-[#e4f8ec] text-[#1e753b] font-bengali font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow-2xs"
+                className="w-full py-3 sm:py-3.5 px-4 rounded-xl border-2 border-[#25d366] bg-[#f0fbf4] hover:bg-[#e4f8ec] text-[#1b7038] transition-all shadow-xs flex items-center justify-center gap-2.5 group cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#25d366] shrink-0" />
-                <span className="truncate">হোয়াটসঅ্যাপে যোগাযোগ করে অর্ডার করুন</span>
+                <div className="w-8 h-8 rounded-full bg-[#25d366] text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-xs">
+                  <MessageCircle className="w-5 h-5 text-white" />
+                </div>
+                <div className="text-left font-bengali">
+                  <span className="block font-bold text-sm sm:text-base text-[#155724] leading-tight">
+                    হোয়াটসঅ্যাপে যোগাযোগ করে অর্ডার করুন
+                  </span>
+                  <span className="block text-[11px] sm:text-xs text-[#2b7244]">
+                    সরাসরি কথা বলতে বা বিকাশ/নগদে অগ্রিম পেমেন্ট করতে ক্লিক করুন
+                  </span>
+                </div>
               </a>
+
+              <p className="text-xs sm:text-[13px] text-[#2c5237] text-center px-3.5 py-2.5 rounded-xl bg-[#eaf7ee] border border-[#c4e6ce] font-bengali leading-relaxed">
+                আপনি অগ্রিম পেমেন্ট করতে চাইলে বা বিস্তারিত কথা বলে অর্ডার করতে চাইলে আমাদের হোয়াটসঅ্যাপে নক দিন।
+              </p>
             </div>
           </div>
 

@@ -6,7 +6,7 @@ import { ProductReview } from '../types';
 export const ReviewsSection: React.FC = () => {
   const [reviews, setReviews] = useState<ProductReview[]>(() => {
     try {
-      const stored = localStorage.getItem('jhilmill_user_reviews');
+      const stored = localStorage.getItem('giftmagic_user_reviews') || localStorage.getItem('jhilmill_user_reviews');
       if (stored) {
         return [...JSON.parse(stored), ...PRODUCT_REVIEWS];
       }
@@ -49,10 +49,10 @@ export const ReviewsSection: React.FC = () => {
     setReviews(updated);
 
     try {
-      const existingUser = localStorage.getItem('jhilmill_user_reviews');
+      const existingUser = localStorage.getItem('giftmagic_user_reviews') || localStorage.getItem('jhilmill_user_reviews');
       const userList = existingUser ? JSON.parse(existingUser) : [];
       userList.unshift(newRev);
-      localStorage.setItem('jhilmill_user_reviews', JSON.stringify(userList));
+      localStorage.setItem('giftmagic_user_reviews', JSON.stringify(userList));
     } catch (err) {
       console.error(err);
     }

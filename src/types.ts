@@ -33,6 +33,7 @@ export interface CustomerOrder {
   giftMessage?: string;
   status: 'Pending' | 'Confirmed' | 'Shipped' | 'Delivered';
   paymentMethod: 'Cash on Delivery';
+  wcOrderId?: string | number;
 }
 
 export interface ProductReview {

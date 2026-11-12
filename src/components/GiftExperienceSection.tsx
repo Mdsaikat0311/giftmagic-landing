@@ -37,10 +37,10 @@ export const GiftExperienceSection: React.FC<GiftExperienceProps> = ({ onScrollT
                   <Sparkles className="w-3.5 h-3.5" /> রয়্যাল গোল্ডেন প্রেজেন্টেশন
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold mt-1">
-                  লাক্সারি রয়্যাল ভেলভেট উপহার বক্স ও সুবাসিত গোলাপ
+                  লাক্সারি গোল্ডেন জুয়েলারি গিফট বক্স ও প্রিমিয়াম প্রেজেন্টেশন
                 </h3>
                 <p className="text-xs text-stone-200 mt-1">
-                  প্রতিটি রয়্যাল কম্বোতে যুক্ত থাকে প্রিমিয়াম ভেলভেট জুয়েলারি বক্স ও আকর্ষণীয় স্বর্ণালী রিবন
+                  প্রতিটি কম্বোতে যুক্ত থাকে প্রিমিয়াম জুয়েলারি গিফট বক্স ও আকর্ষণীয় প্রেজেন্টেশন
                 </p>
               </div>
             </div>
@@ -71,7 +71,7 @@ export const GiftExperienceSection: React.FC<GiftExperienceProps> = ({ onScrollT
               <div className="flex items-center gap-2 pb-3 border-b border-[#e5d0a6]">
                 <Gift className="w-5 h-5 text-[#9e2a2b]" />
                 <h3 className="font-serif-luxury font-bold text-base tracking-wider text-[#856119]">
-                  Royal Velvet Gift Packaging
+                  লাক্সারি জুয়েলারি গিফট প্যাকেজিং
                 </h3>
               </div>
 
@@ -79,9 +79,9 @@ export const GiftExperienceSection: React.FC<GiftExperienceProps> = ({ onScrollT
                 <div className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#2d7a46] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-sm text-[#261f18]">রয়েল রেড ভেলভেট জুয়েলারি বক্স:</span>
+                    <span className="font-bold text-sm text-[#261f18]">প্রিমিয়াম জুয়েলারি গিফট বক্স:</span>
                     <p className="text-stone-600 mt-0.5">
-                      উচ্চমানের নরম ভেলভেট ক্লথ ফিনিশিং যা পায়েলটিকে সুরক্ষিত রাখে এবং উপহারের মান বহুগুণ বাড়িয়ে তোলে।
+                      পায়েল সুরক্ষিত ও স্ক্র্যাচ-ফ্রি রাখার জন্য আকর্ষণীয় বক্স প্যাকেজিং, যা কাউকে সরাসরি গিফট করার জন্য ১০০% প্রস্তুত।
                     </p>
                   </div>
                 </div>
@@ -89,9 +89,9 @@ export const GiftExperienceSection: React.FC<GiftExperienceProps> = ({ onScrollT
                 <div className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#2d7a46] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-sm text-[#261f18]">সুবাসিত ভেলভেট পারফিউম রোজ:</span>
+                    <span className="font-bold text-sm text-[#261f18]">১৮ ক্যারেট গোল্ড প্লেটিং ও প্রিমিয়াম পলিশ:</span>
                     <p className="text-stone-600 mt-0.5">
-                      বক্সটি খোলার সাথে সাথেই মিষ্টি সুবাস ছড়িয়ে পড়ে, যা আপনার উপহারকে করে তোলে চিরস্মরণীয়।
+                      খাঁটি স্টেইনলেস স্টিল বেস এবং উন্নত গোল্ড প্লেটিং, যা সম্পূর্ণ ওয়াটারপ্রুফ এবং নিয়মিত ব্যবহারে এর উজ্জ্বলতা নষ্ট হয় না।
                     </p>
                   </div>
                 </div>
@@ -99,9 +99,9 @@ export const GiftExperienceSection: React.FC<GiftExperienceProps> = ({ onScrollT
                 <div className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#2d7a46] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-sm text-[#261f18]">স্বর্ণালী রিবন ও সিল্ড প্রেজেন্টেশন:</span>
+                    <span className="font-bold text-sm text-[#261f18]">রোমান্টিক হার্ট চার্ম ও অ্যাডজাস্টেবল চেইন:</span>
                     <p className="text-stone-600 mt-0.5">
-                      বাহির থেকে দেখেই বোঝা যাবে এটি একটি খাঁটি প্রিমিয়াম রাজকীয় উপহার।
+                      পায়ে দারুণভাবে মানিয়ে যাওয়ার জন্য সাথে রয়েছে কিউট গোল্ড হার্ট লকেট এবং যেকোনো সাইজের পায়ে ফিট হওয়ার এক্সটেনশন লুপ।
                     </p>
                   </div>
                 </div>

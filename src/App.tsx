@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { UrgencyRibbon } from './components/UrgencyRibbon';
 import { ProductHero } from './components/ProductHero';
@@ -17,11 +17,18 @@ import { OrderTrackerModal } from './components/OrderTrackerModal';
 import { AdminOrdersDrawer } from './components/AdminOrdersDrawer';
 import { PRODUCT_PACKAGES } from './data/productData';
 import { ProductPackage, CustomerOrder } from './types';
+import { initPixel, trackPageView } from './utils/tracking';
 
 export default function App() {
   // Package selection defaults to 1 Pair (৬৯০ টাকা)
   const [selectedPackage, setSelectedPackage] = useState<ProductPackage>(PRODUCT_PACKAGES[0]);
   const [quantity, setQuantity] = useState<number>(1);
+
+  // Initialize tracking and fire PageView on landing
+  useEffect(() => {
+    initPixel();
+    trackPageView();
+  }, []);
 
   // Modals & Drawers
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);

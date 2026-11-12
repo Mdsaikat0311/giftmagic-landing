@@ -54,7 +54,7 @@ export const PhotoLookbook: React.FC = () => {
         <div className="mt-8 p-4 rounded-xl bg-[#faf6ee] border border-[#e8dfcf] flex items-center justify-center gap-2 text-center text-xs font-bengali text-[#635343]">
           <Heart className="w-4 h-4 text-[#9e2a2b] fill-current shrink-0" />
           <span>
-            ঝিলমিল প্রতিশ্রুতি: ছবির সাথে বাস্তবের মিল না পেলে ডেলিভারি চার্জ ছাড়াই তাৎক্ষণিক ফেরত দেওয়ার সুবিধা রয়েছে।
+            গিফট ম্যাজিক প্রতিশ্রুতি: ছবির সাথে বাস্তবের মিল না পেলে ডেলিভারি চার্জ ছাড়াই তাৎক্ষণিক ফেরত দেওয়ার সুবিধা রয়েছে।
           </span>
         </div>
       </div>

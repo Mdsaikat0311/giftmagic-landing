@@ -22,7 +22,7 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
     if (!clean) return;
 
     try {
-      const stored = localStorage.getItem('jhilmill_orders');
+      const stored = localStorage.getItem('giftmagic_orders') || localStorage.getItem('jhilmill_orders');
       if (stored) {
         const orders: CustomerOrder[] = JSON.parse(stored);
         const match = orders.find(
@@ -135,7 +135,7 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
 
         {/* Footer Admin Link */}
         <div className="pt-2 border-t border-[#ece2d3] flex items-center justify-between text-[11px]">
-          <span className="text-stone-400">Jhilmill Customer Portal</span>
+          <span className="text-stone-400">Gift Magic Customer Portal</span>
           <button
             onClick={() => {
               onClose();

@@ -13,7 +13,7 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
   };
 
   const whatsappConfirmationText = encodeURIComponent(
-    `আসসালামু আলাইকুম! আমি Jhilmill-এ অর্ডার সম্পন্ন করেছি।\nঅর্ডার আইডি: ${order.id}\nনাম: ${order.customerName}\nমোবাইল: ${order.phone}\nপ্যাকেজ: ${order.packageName} (${order.quantity} টি)\nমোট মূল্য: ৳${order.total} (ক্যাশ অন ডেলিভারি)।\nঅনুগ্রহ করে নিশ্চিত করবেন।`
+    `আসসালামু আলাইকুম! আমি Gift Magic-এ অর্ডার সম্পন্ন করেছি।\nঅর্ডার আইডি: ${order.id}\nনাম: ${order.customerName}\nমোবাইল: ${order.phone}\nপ্যাকেজ: ${order.packageName} (${order.quantity} টি)\nমোট মূল্য: ৳${order.total} (ক্যাশ অন ডেলিভারি)।\nঅনুগ্রহ করে নিশ্চিত করবেন।`
   );
   const whatsappUrl = `https://wa.me/8801700000000?text=${whatsappConfirmationText}`;
 
@@ -48,7 +48,14 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
         <div className="my-5 p-4 rounded-xl bg-[#faf6ee] border border-[#e8dfcf] space-y-2.5 text-xs text-[#42362b]">
           <div className="flex justify-between items-center pb-2 border-b border-[#e2d5c2]">
             <span className="text-stone-500">অর্ডার নম্বর (Order ID):</span>
-            <span className="font-mono font-bold text-sm text-[#9e2a2b]">{order.id}</span>
+            <div className="text-right">
+              <span className="font-mono font-bold text-sm text-[#9e2a2b]">{order.id}</span>
+              {order.wcOrderId && (
+                <span className="block text-[10px] text-[#2d7a46] font-bold">
+                  ✓ WooCommerce সিঙ্কড্ (#{order.wcOrderId})
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="flex justify-between items-center">

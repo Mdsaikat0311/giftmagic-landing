@@ -12,7 +12,7 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({
   onScrollToOrder,
 }) => {
   const whatsappUrl = `https://wa.me/8801700000000?text=${encodeURIComponent(
-    `আসসালামু আলাইকুম! আমি Jhilmill থেকে "${selectedPackage.bengaliName}" অর্ডার করতে চাই।`
+    `আসসালামু আলাইকুম! আমি Gift Magic থেকে "${selectedPackage.bengaliName}" অর্ডার করতে চাই।`
   )}`;
 
   return (

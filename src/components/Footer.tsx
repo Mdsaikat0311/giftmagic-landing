@@ -20,14 +20,14 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-linear-to-br from-[#c99f36] to-[#916e1e] flex items-center justify-center text-white font-serif-luxury font-bold text-lg">
-                J
+                G
               </div>
               <span className="font-serif-luxury text-2xl font-bold tracking-widest text-[#f5d77f]">
-                JHILMILL
+                GIFT MAGIC
               </span>
             </div>
             <p className="text-xs text-[#b8a994] leading-relaxed">
-              ঝিলমিল - বাংলাদেশের বিশ্বস্ত লাক্সারি জুয়েলারি ও উপহার শপ। খাঁটি ১৮ ক্যারেট গোল্ড প্লেটেড জুয়েলারির মাধ্যমে প্রিয়জনের মুখে নিখাদ আনন্দ ফোটানোই আমাদের লক্ষ্য।
+              গিফট ম্যাজিক - বাংলাদেশের বিশ্বস্ত লাক্সারি জুয়েলারি ও উপহার শপ। খাঁটি ১৮ ক্যারেট গোল্ড প্লেটেড জুয়েলারির মাধ্যমে প্রিয়জনের মুখে নিখাদ আনন্দ ফোটানোই আমাদের লক্ষ্য।
             </p>
             <div className="flex items-center gap-2 text-xs text-[#d4af37]">
               <Sparkles className="w-3.5 h-3.5" />
@@ -107,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#d4af37]" />
-                <span>support@jhilmill.com</span>
+                <span>support@giftmagic.com</span>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#d4af37] shrink-0 mt-0.5" />
@@ -119,7 +119,7 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#8c7f6f]">
-          <p>© ২০২৬ ঝিলমিল ডট কম (Jhilmill BD). সর্বস্বত্ব সংরক্ষিত।</p>
+          <p>© ২০২৬ গিফট ম্যাজিক (Gift Magic BD). সর্বস্বত্ব সংরক্ষিত।</p>
           <div className="flex items-center gap-4">
             <button
               onClick={onScrollToOrder}
