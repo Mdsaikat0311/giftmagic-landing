@@ -45,4 +45,5 @@ export interface ProductReview {
   comment: string;
   verified: boolean;
   image?: string;
+  badgeText?: string;
 }
