@@ -3,37 +3,37 @@ import { ProductPackage, ProductReview } from '../types';
 export const PRODUCT_IMAGES = [
   {
     id: 'img-1',
-    url: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg',
+    url: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg',
     title: 'পায়ে পরা প্রিমিয়াম লাক্সারি লুক',
     subtitle: 'স্মুথ ও সফট স্নেক চেইন যা পায়ে নিখুঁতভাবে জড়িয়ে থাকে',
   },
   {
     id: 'img-2',
-    url: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-3_b875b21b.jpg',
+    url: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-3_b875b21b.jpg',
     title: 'রোমান্টিক গোল্ড হার্ট লকেট চার্ম',
     subtitle: 'ভালোবাসা প্রকাশের নিখুঁত প্রতীক এবং প্রিমিয়াম ফিনিশিং',
   },
   {
     id: 'img-3',
-    url: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-6_5f331376.jpg',
+    url: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-6_5f331376.jpg',
     title: 'মার্বেল ও পার্ল স্টুডিও প্রেজেন্টেশন',
     subtitle: '১৮ ক্যারেট গোল্ড প্লেটিং - খাঁটি সোনার মতো চোখ ধাঁধানো উজ্জ্বলতা',
   },
   {
     id: 'img-4',
-    url: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainless-1__1__d1d989f3.jpg',
+    url: './assets/aistudio/18K-Premium-Gold-Finishing-Stainless-1__1__d1d989f3.jpg',
     title: 'পার্টি বা ক্যাজুয়াল আউটফিটের সাথে মানানসই',
     subtitle: 'হিল, জুতো বা খালি পায়ে যেকোনো অনুষ্ঠানে আপনাকে করে তুলবে মোহনীয়',
   },
   {
     id: 'img-5',
-    url: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-4_a0de6ece.jpg',
+    url: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-4_a0de6ece.jpg',
     title: 'অ্যাডজাস্টেবল এক্সটেনশন ও লবস্টার লক',
     subtitle: 'যেকোনো সাইজের পায়ে সহজেই ফিট করার মতো অ্যাডজাস্টেবল চেইন',
   },
   {
     id: 'img-6',
-    url: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles_ee9ca70f.jpg',
+    url: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles_ee9ca70f.jpg',
     title: 'মাইক্রো ডিটেইলিং ও হাই-গ্রেড পলিশ',
     subtitle: 'খাঁটি স্টেইনলেস স্টিল বেস - ওয়াটারপ্রুফ ও নন-অ্যালার্জিক',
   },
@@ -104,7 +104,7 @@ export const PRODUCT_REVIEWS: ProductReview[] = [
     date: '২ দিন আগে',
     comment: 'ছবি দেখে যতটা সুন্দর ভেবেছিলাম, হাতে পেয়ে আরও অনেক বেশি সুন্দর লেগেছে! গোল্ড কালারটা একদম অরিজিনাল সোনার মতো চকচক করে। আর হার্ট লকেটটা অসম্ভব প্রিমিয়াম। ধন্যবাদ ডেলিভারি ম্যানের সামনে দেখে নেওয়ার সুযোগ দেওয়ার জন্য।',
     verified: true,
-    image: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg',
+    image: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg',
   },
   {
     id: 'rev-2',
@@ -114,7 +114,7 @@ export const PRODUCT_REVIEWS: ProductReview[] = [
     date: '৩ দিন আগে',
     comment: 'আমাদের ম্যারেজ অ্যানিভার্সারিতে ওয়াইফকে সারপ্রাইজ গিফট দিয়েছিলাম সাথে চিরকুট লিখে। ও এত খুশি হয়েছে যে ভাষায় প্রকাশ করার মতো না! ভেলভেট বক্সের প্যাকেজিং আর ফিনিশিং সত্যি অসাধারণ। আপনারা চোখ বন্ধ করে গিফট করতে পারেন।',
     verified: true,
-    image: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-3_b875b21b.jpg',
+    image: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-3_b875b21b.jpg',
   },
   {
     id: 'rev-3',
@@ -124,7 +124,7 @@ export const PRODUCT_REVIEWS: ProductReview[] = [
     date: '৪ দিন আগে',
     comment: 'আমি প্রায় ১৫ দিন ধরে নিয়মিত ব্যবহার করছি। গোসল করেছি, সাবান পানি লেগেছে কিন্তু কালার একটুও পরিবর্তন হয়নি। একদম স্মুথ, কোনো দাগ বা খসখসে ভাব নেই। ১ জোড়া কম্বো নিয়েছিলাম, বান্ধবীরা সবাই তারিফ করেছে!',
     verified: true,
-    image: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-6_5f331376.jpg',
+    image: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-6_5f331376.jpg',
   },
   {
     id: 'rev-4',
@@ -134,7 +134,7 @@ export const PRODUCT_REVIEWS: ProductReview[] = [
     date: '৫ দিন আগে',
     comment: 'অসাধারণ কোয়ালিটি! পায়ে পরলে এত সুন্দর দেখায় যে চোখ জুড়িয়ে যায়। সাইজ নিয়ে একটু চিন্তায় ছিলাম, কিন্তু এক্সটেনশন চেইন থাকায় খুব সুন্দর এডজাস্ট হয়ে গেছে। গিফট ম্যাজিক ব্র্যান্ডের সার্ভিস সত্যিই প্রশংসনীয়।',
     verified: true,
-    image: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainless-1__1__d1d989f3.jpg',
+    image: './assets/aistudio/18K-Premium-Gold-Finishing-Stainless-1__1__d1d989f3.jpg',
   },
   {
     id: 'rev-5',
@@ -144,7 +144,7 @@ export const PRODUCT_REVIEWS: ProductReview[] = [
     date: '৬ দিন আগে',
     comment: 'প্রিয় মানুষকে জন্মদিনের উপহার হিসেবে পাঠিয়েছিলাম। ক্যাশ অন ডেলিভারি থাকায় নিশ্চিন্তে অর্ডার করেছি। তারা সুন্দর করে আমার গিফট নোটটি লিখে বাক্সে দিয়ে দিয়েছিল। ডেলিভারি ২ দিনের মধ্যে পেয়েছি।',
     verified: true,
-    image: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-4_a0de6ece.jpg',
+    image: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-4_a0de6ece.jpg',
   },
   {
     id: 'rev-6',
@@ -154,7 +154,7 @@ export const PRODUCT_REVIEWS: ProductReview[] = [
     date: '১ সপ্তাহ আগে',
     comment: 'দাম অনুযায়ী কোয়ালিটি অনেক অনেক ভালো। চেইনের ডিজাইনটা খুব ইউনিক, সচরাচর বাজারে এমন প্রিমিয়াম ফিনিশের স্নেক চেইন পাওয়া যায় না। যারা নিতে চাচ্ছেন দ্বিধা ছাড়াই নিতে পারেন।',
     verified: true,
-    image: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles_ee9ca70f.jpg',
+    image: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles_ee9ca70f.jpg',
   },
 ];
 

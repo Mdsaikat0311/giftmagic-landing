@@ -42,7 +42,7 @@ export const ReviewsSection: React.FC = () => {
       date: 'আজকে',
       comment: reviewerComment.trim(),
       verified: true,
-      image: '/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg',
+      image: './assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg',
     };
 
     const updated = [newRev, ...reviews];

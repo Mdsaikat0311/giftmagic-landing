@@ -52,7 +52,7 @@ export const OrderFormSection: React.FC<OrderFormSectionProps> = ({
       (phone.trim() ? `\nফোন: ${phone.trim()}` : '') +
       (address.trim() ? `\nঠিকানা: ${address.trim()}` : '')
   );
-  const whatsappCheckoutUrl = `https://wa.me/8801700000000?text=${whatsappOrderText}`;
+  const whatsappCheckoutUrl = `https://wa.me/8801823417090?text=${whatsappOrderText}`;
 
 
   const validate = () => {

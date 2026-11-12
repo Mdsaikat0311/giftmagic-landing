@@ -27,7 +27,7 @@ export const GiftExperienceSection: React.FC<GiftExperienceProps> = ({ onScrollT
           <div className="lg:col-span-6 space-y-4">
             <div className="relative rounded-2xl overflow-hidden border border-[#e5d8c3] shadow-sm bg-white">
               <img
-                src="/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-3_b875b21b.jpg"
+                src="./assets/aistudio/18K-Premium-Gold-Finishing-Stainles-3_b875b21b.jpg"
                 alt="Luxury Gift Presentation"
                 referrerPolicy="no-referrer"
                 className="w-full h-72 sm:h-80 object-cover"

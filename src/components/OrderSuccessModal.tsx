@@ -15,7 +15,7 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
   const whatsappConfirmationText = encodeURIComponent(
     `আসসালামু আলাইকুম! আমি Gift Magic-এ অর্ডার সম্পন্ন করেছি।\nঅর্ডার আইডি: ${order.id}\nনাম: ${order.customerName}\nমোবাইল: ${order.phone}\nপ্যাকেজ: ${order.packageName} (${order.quantity} টি)\nমোট মূল্য: ৳${order.total} (ক্যাশ অন ডেলিভারি)।\nঅনুগ্রহ করে নিশ্চিত করবেন।`
   );
-  const whatsappUrl = `https://wa.me/8801700000000?text=${whatsappConfirmationText}`;
+  const whatsappUrl = `https://wa.me/8801823417090?text=${whatsappConfirmationText}`;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, PhoneCall } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { PRODUCT_FAQS } from '../data/productData';
 
 export const FAQSection: React.FC = () => {
@@ -55,25 +55,6 @@ export const FAQSection: React.FC = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Still have questions card */}
-        <div className="mt-8 p-5 bg-white rounded-2xl border border-[#e5d8c3] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left font-bengali">
-          <div>
-            <h4 className="font-bold text-sm text-[#211c19]">
-              অন্য কোনো প্রশ্ন আছে বা কথা বলতে চান?
-            </h4>
-            <p className="text-xs text-[#6e5e50]">
-              আমাদের কাস্টমার সাপোর্ট টিম সকাল ৯টা থেকে রাত ১১টা পর্যন্ত আপনার সেবায় নিয়োজিত।
-            </p>
-          </div>
-          <a
-            href="tel:01700000000"
-            className="px-4 py-2 rounded-xl bg-[#211c19] hover:bg-[#3d332a] text-[#f5d77f] font-semibold text-xs flex items-center gap-1.5 shrink-0 transition-colors"
-          >
-            <PhoneCall className="w-3.5 h-3.5" />
-            সরাসরি কল করুন
-          </a>
         </div>
       </div>
     </section>

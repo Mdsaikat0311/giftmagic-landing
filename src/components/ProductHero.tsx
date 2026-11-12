@@ -45,7 +45,7 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
   const waText = encodeURIComponent(
     `আসসালামু আলাইকুম! আমি Gift Magic থেকে "${selectedPackage.bengaliName}" (${quantity} টি) অর্ডার করতে আগ্রহী। মোট মূল্য: ৳${saleTotalPrice}। বিস্তারিত জানাবেন প্লিজ।`
   );
-  const whatsappUrl = `https://wa.me/8801700000000?text=${waText}`;
+  const whatsappUrl = `https://wa.me/8801823417090?text=${waText}`;
 
   return (
     <section className="py-6 sm:py-12 px-3 sm:px-6 max-w-6xl mx-auto w-full max-w-full overflow-hidden">

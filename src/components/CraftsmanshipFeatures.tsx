@@ -102,7 +102,7 @@ export const CraftsmanshipFeatures: React.FC = () => {
           <div className="flex items-center justify-center gap-2 sm:gap-3 max-w-full overflow-x-auto pb-1">
             <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-[#e0d3be] shadow-2xs shrink-0">
               <img
-                src="/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg"
+                src="./assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg"
                 alt="Worn detail"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
@@ -110,7 +110,7 @@ export const CraftsmanshipFeatures: React.FC = () => {
             </div>
             <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-[#e0d3be] shadow-2xs shrink-0">
               <img
-                src="/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-3_b875b21b.jpg"
+                src="./assets/aistudio/18K-Premium-Gold-Finishing-Stainles-3_b875b21b.jpg"
                 alt="Stand detail"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
@@ -118,7 +118,7 @@ export const CraftsmanshipFeatures: React.FC = () => {
             </div>
             <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-[#e0d3be] shadow-2xs shrink-0">
               <img
-                src="/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-6_5f331376.jpg"
+                src="./assets/aistudio/18K-Premium-Gold-Finishing-Stainles-6_5f331376.jpg"
                 alt="Flat layout"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"

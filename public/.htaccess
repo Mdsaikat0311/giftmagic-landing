@@ -1,0 +1,20 @@
+# Enable DirectoryIndex to serve index.html directly
+DirectoryIndex index.html
+
+# Prevent WordPress root rewrite from overriding landing page assets
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Ensure trailing slash if requesting directory
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !(.*)/$
+  RewriteRule ^(.*)$ $1/ [L,R=301]
+</IfModule>
+
+# Ensure correct MIME types for modern ES modules and styles
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+  AddType image/svg+xml .svg
+</IfModule>

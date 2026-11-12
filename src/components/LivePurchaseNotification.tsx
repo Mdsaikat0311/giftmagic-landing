@@ -75,27 +75,45 @@ export const LivePurchaseNotification: React.FC = () => {
     loadOrders();
   }, []);
 
-  // Interval loop: repeatedly show orders one after another
+  // Interval loop: repeatedly show orders with a 10-second pause in between
   useEffect(() => {
     if (dismissed || notifications.length === 0) return;
 
-    // Show initial after 2.5 seconds
-    const initialTimer = setTimeout(() => {
-      setVisible(true);
-    }, 2500);
+    let isMounted = true;
+    let timerId: ReturnType<typeof setTimeout>;
 
-    // Repeat cycle: 5.5s visible, 3.5s pause, then next order
-    const cycleInterval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
+    const scheduleCycle = () => {
+      // 10-second pause (১০ সেকেন্ডের বিরতি) before showing next order
+      timerId = setTimeout(() => {
+        if (!isMounted) return;
         setCurrentIndex((prev) => (prev + 1) % notifications.length);
         setVisible(true);
-      }, 3500);
-    }, 9000);
+
+        // Keep visible for 5 seconds
+        timerId = setTimeout(() => {
+          if (!isMounted) return;
+          setVisible(false);
+          scheduleCycle();
+        }, 5000);
+      }, 10000);
+    };
+
+    // Initial appearance after 2.5 seconds
+    timerId = setTimeout(() => {
+      if (!isMounted) return;
+      setVisible(true);
+
+      // Keep visible for 5 seconds, then enter 10-second pause cycle
+      timerId = setTimeout(() => {
+        if (!isMounted) return;
+        setVisible(false);
+        scheduleCycle();
+      }, 5000);
+    }, 2500);
 
     return () => {
-      clearTimeout(initialTimer);
-      clearInterval(cycleInterval);
+      isMounted = false;
+      clearTimeout(timerId);
     };
   }, [dismissed, notifications.length]);
 
@@ -113,7 +131,7 @@ export const LivePurchaseNotification: React.FC = () => {
         {/* Tiny thumbnail */}
         <div className="w-8 h-8 rounded-lg overflow-hidden border border-[#e0d3be] shrink-0 bg-[#faf6ee]">
           <img
-            src="/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg"
+            src="./assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg"
             alt="Payel"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover"
@@ -132,7 +150,7 @@ export const LivePurchaseNotification: React.FC = () => {
             {current.name} · <span className="text-stone-500 font-normal">{current.city}</span>
           </p>
           <p className="text-[10px] text-[#9e2a2b] font-medium truncate leading-tight">
-            {current.item} ({current.time})
+            {current.item}
           </p>
         </div>
 

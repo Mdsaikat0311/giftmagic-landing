@@ -44,7 +44,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         <div className="flex-1 overflow-y-auto p-5 space-y-4">
           <div className="p-4 rounded-xl border border-[#e5d8c3] bg-[#fbf8f2] flex gap-3.5">
             <img
-              src="/assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg"
+              src="./assets/aistudio/18K-Premium-Gold-Finishing-Stainles-5_8cf9a3fb.jpg"
               alt="Snake Payel"
               referrerPolicy="no-referrer"
               className="w-18 h-18 rounded-lg object-cover border border-[#e0d3be] shrink-0"

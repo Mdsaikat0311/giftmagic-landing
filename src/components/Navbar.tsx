@@ -33,10 +33,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Truck className="w-3 h-3 text-[#d4af37]" /> ২-৩ দিনে দ্রুত হোম ডেলিভারি
             </span>
             <a
-              href="tel:01700000000"
+              href="tel:01823417090"
               className="flex items-center gap-1 font-bengali text-[#f5d77f] hover:text-white transition-colors"
             >
-              <PhoneCall className="w-3 h-3" /> হেল্পলাইন: 01700-000000
+              <PhoneCall className="w-3 h-3" /> হেল্পলাইন: 01823-417090
             </a>
           </div>
         </div>
